@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { CheakValid } from '../utils/validation';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [IsLogin, setIsLogin] = useState(true)
-
+    
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     const [ERROR, setERROR] = useState(null)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const HandleFormState = (e) => {
         e.preventDefault()
         setIsLogin(!IsLogin)
@@ -17,6 +21,7 @@ const Login = () => {
 
     const HandleAuth = async (e)=>{
         e.preventDefault()
+        
        const message =  CheakValid(email,password)
        setERROR(message)
 
@@ -24,9 +29,16 @@ const Login = () => {
         if (IsLogin) {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log('Signed In User:', userCredential.user);
+            dispatch(addUser(email))
+            navigate('/browse')
+
         } else {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             console.log('Signed Up User:', userCredential.user);
+            dispatch(addUser(email))
+            navigate('/browse')
+
+
         }
         setERROR(null); 
     } catch (err) {
