@@ -11,15 +11,15 @@ const Navbar = () => {
   const user = useSelector((state) => state.user.user);
   const { displayName, photoURL } = user || {}; 
   
-  console.log('Profile Photo URL:', photoURL);
+  // console.log('Profile Photo URL:', photoURL);
 
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      console.log("Sign Out successfully");
+      // console.log("Sign Out successfully");
       // navigate('/');
     } catch (error) {
-      console.error("Error signing out:", error);
+      // console.error("Error signing out:", error);
       // navigate('/');
     }
   };
@@ -29,12 +29,12 @@ const Navbar = () => {
         const { uid, email, displayName,photoURL } = user;
         dispatch(addUser({ uid, email, displayName ,photoURL}));
 
-        console.log("User signed in:", user);
-        console.log("Dispatched user:", { uid, email, displayName,photoURL });
+        // console.log("User signed in:", user);
+        // console.log("Dispatched user:", { uid, email, displayName,photoURL });
         navigate('/browse')
       } else {
         dispatch(removeUser());
-        console.log("User signed out");
+        // console.log("User signed out");
         navigate('/')
       }
     });

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constant'
+import { API_OPTIONS } from '../utils/constant copy'
 import { useDispatch } from 'react-redux'
 import { addTrailerVideo } from '../utils/movieSlice'
 
@@ -13,7 +13,7 @@ const useMovieTrailer =(movieID)=>{
     const trailer =filterData.length? filterData[0]:json.results[0]
 
     dispatch(addTrailerVideo(trailer))
-    console.log(trailer)
+   //  console.log(trailer)
    }
 
    useEffect(()=>{

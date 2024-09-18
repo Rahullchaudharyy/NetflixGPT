@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constant'
+import { API_OPTIONS } from '../utils/constant copy'
 import { addPopularMovies } from '../utils/movieSlice'
 
 

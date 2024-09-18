@@ -5,7 +5,7 @@ import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { AVATAR_IMAGE } from '../utils/constant';
+import { AVATAR_IMAGE } from '../utils/constant copy';
 
 
 const Login = () => {
@@ -34,7 +34,7 @@ const Login = () => {
             const user = userCredential.user;
       
             const { uid, email: userEmail, displayName, photoURL } = user;
-            console.log('Signed In User:', user);
+            // console.log('Signed In User:', user);
       
             dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
             navigate('/browse');
@@ -48,7 +48,7 @@ const Login = () => {
             });
       
             const { uid, email: userEmail, displayName, photoURL } = user;
-            console.log('User profile updated successfully:', { uid, userEmail, displayName });
+            // console.log('User profile updated successfully:', { uid, userEmail, displayName });
       
             dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
             navigate('/browse');

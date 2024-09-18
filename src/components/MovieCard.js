@@ -1,5 +1,5 @@
 import React from 'react'
-import {CDN_IMG_PATH} from '../utils/constant'
+import {CDN_IMG_PATH} from '../utils/constant copy'
 
 const MovieCard = ({poster_path}) => {
 
