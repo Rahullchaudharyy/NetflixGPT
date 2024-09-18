@@ -2,7 +2,7 @@ import React from 'react'
 
 const Title = ({title,overview}) => {
   return (
-    <div className='h-full justify-center   pb-[10vmin]  absolute  w-[70vmin] pl-10 flex flex-col gap-5 text-white bg-gradient-to-r from-black' >
+    <div className='h-full justify-center z-30  pb-[10vmin] absolute w-[70vmin] pl-10 flex flex-col gap-5 text-white bg-gradient-to-r from-black' >
 
       <div className='w-[50vmin] p-5 flex flex-col gap-6'>
       <h1 className='text-5xl font-bold'>{title}</h1>

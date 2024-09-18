@@ -7,6 +7,8 @@ const API_OPTIONS = {
       'accept': 'application/json'
     }
   }
+
+  const CDN_IMG_PATH = 'https://image.tmdb.org/t/p/w500'
     
-export {API_OPTIONS}
+export {API_OPTIONS,CDN_IMG_PATH}
 // Make this provate
