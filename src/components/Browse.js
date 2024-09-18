@@ -1,9 +1,16 @@
-import React from 'react'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import BackgroundContainer from './BackgroundContainer'
 import Navbar from './Navbar'
 
+
 const Browse = () => {
+  useNowPlayingMovies()
+
   return (
-    <div><Navbar/></div>
+    <div>
+      <Navbar/>
+      <BackgroundContainer/>
+    </div>
   )
 }
 

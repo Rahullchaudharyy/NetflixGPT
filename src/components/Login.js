@@ -5,6 +5,7 @@ import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { AVATAR_IMAGE } from '../utils/constant';
 
 
 const Login = () => {
@@ -43,7 +44,7 @@ const Login = () => {
       
             await updateProfile(user, {
               displayName: name,
-              photoURL: 'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg',
+              photoURL:AVATAR_IMAGE,
             });
       
             const { uid, email: userEmail, displayName, photoURL } = user;
@@ -52,7 +53,7 @@ const Login = () => {
             dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
             navigate('/browse');
           }
-      
+          
           setERROR(null);
         } catch (err) {
           setERROR(err.message);
@@ -108,12 +109,12 @@ const Login = () => {
     >
       {IsLogin ? "Sign In" : "Sign Up"}
     </button>
-    <h3 className='text-white text-center mt-2'>OR</h3>
     <button
       onClick={HandleFormState}
-      className='text-white bg-[#333333] text-center p-4 sm:p-[1.2vmin] rounded-sm'
+      className='text-white cursor-pointer font-bold text-center p-4 sm:p-[1.2vmin] rounded-sm flex justify-start'
     >
-      {IsLogin ? "Sign Up" : "Sign In"}
+      {IsLogin ?"New to NetflixGPT ? Sign Up" : "Already Have an account ? Sign In"}
+      
     </button>
   </form>
 </div>
