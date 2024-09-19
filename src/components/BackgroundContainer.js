@@ -10,7 +10,7 @@ const BackgroundContainer = () => {
     if (movies===null) return;
 
 
-    const mainMovie = movies[0]
+    const mainMovie = movies[1] // 3<4<5
     const {original_title,overview,id} = mainMovie;
     // console.log(original_title)
     // console.log(overview)
@@ -25,3 +25,6 @@ const BackgroundContainer = () => {
 }
 
 export default BackgroundContainer
+
+
+

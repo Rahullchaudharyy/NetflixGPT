@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useSelector , useDispatch} from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { setlanguage, toggleGptSearchView } from '../utils/gptSlice';
+import lang from '../utils/languageConstant';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch  = useDispatch()
   const user = useSelector((state) => state.user.user);
   const { displayName, photoURL } = user || {}; 
+  const languageKeys = Object.keys(lang);
+  const GptSearchView = useSelector(state=>state.gpt.GptSearchView)
+
+  // console.log(languageKeys)
+  const [selectedLanguage, setSelectedLanguage] = useState(languageKeys[0]); // Default to first language
+
   
   // console.log('Profile Photo URL:', photoURL);
 
@@ -42,6 +50,24 @@ const Navbar = () => {
     return ()=> unsubscribe()
   }, []); 
 
+  const HandleGptView = ()=>{
+    dispatch(toggleGptSearchView())
+  }
+
+
+  const HandleLanguageState = (event) => {
+    const selectedLangKey = event.target.value;
+    const selectedLang = lang[selectedLangKey];
+    setSelectedLanguage(selectedLangKey); 
+     
+    
+    dispatch(setlanguage({
+      language: selectedLangKey, 
+      search: selectedLang.search,  // Dispatching the search label
+      placeholder: lang[selectedLangKey].gptSearchPlaceholder
+    }));
+  };
+
 
   return (
     <div className='h-[70px] w-full bg-transparent flex fixed z-[99] bg-gradient-to-b from-black'>
@@ -54,6 +80,18 @@ const Navbar = () => {
       </div>
 
       <div className='w-[50%] relative h-full bg-green-8000 flex justify-end p-2 gap-3 items-center'>
+         {GptSearchView&& <select
+          className="border bg-transparent text-white rounded p-2"
+          value={selectedLanguage}
+          onChange={HandleLanguageState} // Trigger onChange
+        >
+          {languageKeys.map((key) => (
+            <option className='bg-black' key={key} value={key}>
+              {key}
+            </option>
+          ))}
+        </select>}
+        <button onClick={HandleGptView} className='text-white bg-purple-700 p-2 rounded-md'>{!GptSearchView?"GPT Search":"Back To Browse"}</button>
         {photoURL ? (
           <img
             alt='Profile'
