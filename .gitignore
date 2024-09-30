@@ -22,7 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-src/utils/constant.js
-src/utils/firebase.js
-src/utils/constant copy.js
+# src/utils/constant.js
+# src/utils/firebase.js
+# src/utils/constant copy.js
 .env
