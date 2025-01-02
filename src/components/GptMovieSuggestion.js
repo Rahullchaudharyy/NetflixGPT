@@ -1,32 +1,50 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import MovieList from './MovieList'
+import { useSelector } from "react-redux";
 
 const GptMovieSuggestion = () => {
-  
-  const {MovieResult,MovieName} = useSelector(state=>state.gpt)
-  if(!MovieResult){
-     return;
-  };
-  console.log("MovieResult",MovieResult)
+  const { MovieResult, MovieName } = useSelector(state => state.gpt);
+  try {
 
-  return (
-    <div>
+    if (!MovieResult) {
+      return null;
+    }
 
-      <MovieList title={MovieResult[0]?.original_title} movies={MovieResult}/>
-        {/* WHen the APi would get activated than use the below code  */}
-      {/* {MovieResult.map((movieName, index) => (
-          <MovieList
-            key={movieName}
-            title={movieName}
-            movies={MovieResult[index]}
-          />
-        ))} */}
+    return (
 
 
+      <div className='p-8' >
+        <h1 className='font-bold text-3xl text-white'>{ } </h1>
+        <div className='flex overflow-x-scroll' id='GPT-DIV'>
 
-    </div>
-  )
-}
+          <div className='flex gap-6 p-2' >
 
-export default GptMovieSuggestion
+            {MovieResult?.map((data, index) => (
+              <div className='w-[200px] break-words rounded-md ' key={index}>
+                <div className="h-[20px] w-full">
+
+                  <h1 className="text-[10px] text-white">{data?.original_title}</h1>
+                </div>
+                <img
+                  alt="poster_path"
+                  src={
+                    data.poster_path
+                      ? `https://image.tmdb.org/t/p/original/${data.poster_path}`
+                      : `https://placehold.co/600x900?text=${data.original_title}`
+                  }
+                />
+              </div>
+            ))}
+
+
+          </div>
+
+
+        </div>
+      </div>
+    );
+  } catch (error) {
+    console.error("Error rendering GptMovieSuggestion:", error);
+    return <div>Something went wrong.</div>;
+  }
+};
+
+export default GptMovieSuggestion;

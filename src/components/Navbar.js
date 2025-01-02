@@ -27,11 +27,11 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      // console.log("Sign Out successfully");
-      // navigate('/');
+      console.log("Sign Out successfully");
+      navigate('/');
     } catch (error) {
       // console.error("Error signing out:", error);
-      // navigate('/');
+      navigate('/');
     }
   };
   useEffect(() => {
@@ -40,12 +40,10 @@ const Navbar = () => {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid, email, displayName, photoURL }));
 
-        // console.log("User signed in:", user);
-        // console.log("Dispatched user:", { uid, email, displayName,photoURL });
+       
         navigate('/browse')
       } else {
         dispatch(removeUser());
-        // console.log("User signed out");
         navigate('/')
       }
     });

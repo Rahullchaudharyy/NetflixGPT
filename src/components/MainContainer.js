@@ -12,9 +12,7 @@ const MainContainer = () => {
       <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
       <MovieList title={"Top Rated"} movies={movies.topRatedMovies}/>
       <MovieList title={"Popular"} movies={movies.popularMovies}/>
-      {/* <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/> */}
-      {/* <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
-      <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/> */}
+ 
       </div>
 
     </div>

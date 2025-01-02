@@ -5,10 +5,10 @@ import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { AVATAR_IMAGE } from '../utils/constant copy';
 
 
 const Login = () => {
+  const AVATAR_IMAGE = 'avaatar.jsp'
     const [IsLogin, setIsLogin] = useState(true)
     const [name, setname] = useState('')
     const [email, setemail] = useState('')

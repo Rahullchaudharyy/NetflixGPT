@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+
+import { useSelector } from 'react-redux' 
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import Background from './Background'
 import Title from './Title'

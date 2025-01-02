@@ -4,7 +4,6 @@ import MovieCard from './MovieCard'
 const MovieList = ({title,movies}) => {
    
     if(!movies) return;
-    // console.log(movies)
   return (
     <div className='p-8' id='MovieList'>
         <h1 className='font-bold text-3xl text-white'>{title}</h1>
@@ -12,9 +11,12 @@ const MovieList = ({title,movies}) => {
 
         <div className='flex gap-6 p-2'>
 
-        {movies.map(movie=>(
-             <MovieCard key={movie.id} poster_path={movie.poster_path}/>)
-             )}
+    
+
+{Array.isArray(movies) && movies.map(movie => (
+  <MovieCard key={movie.id} poster_path={movie.poster_path} />
+))}
+
 
         </div>
         

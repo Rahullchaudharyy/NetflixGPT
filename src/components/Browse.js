@@ -16,7 +16,7 @@ const Browse = () => {
   // console.log(GptSearchView)
 
   return (
-    <div>
+    <div id='Body-Div' className='overflow-x-hidden'>
       <Navbar/>
       {GptSearchView.GptSearchView? <GptSearch/>:<>
         <BackgroundContainer/>
