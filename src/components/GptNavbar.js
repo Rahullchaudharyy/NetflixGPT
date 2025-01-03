@@ -65,33 +65,52 @@ const GptNavbar = () => {
     }
   };
   
+  const dataArray = new Array(4).fill({}); // You can replace this with actual data
+
 
 
   return (
-    <div  className="w-full rounded-lg max-w-lg md:max-w-2xl lg:max-w-4xl overflow-hidden bg-gray-900 absolute py-6 px-4 md:px-6 shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-        className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
-      >
-        <input
-          className="flex-grow py-2 px-4 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
-          placeholder={gptSearchPlaceholder}
-          type="text"
-          value={SearchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button
-          className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out"
-          onClick={handleGPTsearch}
-        >
-          {search}
-        </button>
-      </form>
-      {isLoading && <p>Loading movies...</p>}
-      <GptMovieSuggestion />
+  
+    <div className="w-full rounded-lg max-w-lg md:max-w-2xl lg:max-w-4xl overflow-hidden bg-gray-900 absolute py-6 px-4 md:px-6 shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+    }}
+    className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
+  >
+    <input
+      className="flex-grow py-2 px-4 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+      placeholder={gptSearchPlaceholder}
+      type="text"
+      value={SearchText}
+      onChange={(e) => setSearchText(e.target.value)}
+    />
+    <button
+      className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out"
+      onClick={handleGPTsearch}
+    >
+      {search}
+    </button>
+  </form>
+  {isLoading ? <div className="flex flex-wrap gap-4 pt-[20px]">
+  {dataArray.map((_, index) => (
+    <div key={index} className="w-[200px] break-words rounded-md overflow-hidden">
+      {/* Shimmer Effect */}
+      <div className="h-[20px] w-full bg-gray-200 animate-pulse mb-2">
+        <h1 className="text-[10px] text-transparent bg-gradient-to-r from-gray-300 to-gray-500 bg-clip-text">
+          {/* Placeholder shimmer text */}
+        </h1>
+      </div>
+      <div className="h-[280px] w-full bg-gray-300 animate-pulse">
+        {/* Placeholder shimmer image */}
+      </div>
     </div>
+  ))}
+</div>:
+ <GptMovieSuggestion />
+}
+ 
+</div>
   );
 };
 
