@@ -26,5 +26,5 @@ yarn-error.log*
 # src/utils/firebase.js
 # src/utils/constant copy.js
 .env
-src/utils/constant copy.js
-src/utils/firebase.js
+
+src/utils/constant copy 2.js
