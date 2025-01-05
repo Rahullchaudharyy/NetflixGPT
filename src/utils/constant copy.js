@@ -10,7 +10,7 @@ const API_OPTIONS = {
 };
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GOOGLE_GEN_AI_API_KEY);
-const model = genAI.getGenerativeModel({ model: process.env.REACT_APP_GEN_MODEL_NAME });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const fetchMovieData = async (endpoint) => {
   try {
